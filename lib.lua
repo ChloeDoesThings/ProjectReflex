@@ -16,11 +16,6 @@ Solaris.Name = randomString()
 Solaris.Parent = game.CoreGui
 Solaris.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
-local NotificationHolder = Instance.new("ScreenGui")
-NotificationHolder.Name = "notiHolder"
-NotificationHolder.Parent = game.CoreGui
-NotificationHolder.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
 local RunService = game:GetService("RunService")
@@ -39,13 +34,6 @@ local function CheckKey(tab, key)
 	end
 end
 
-
-
-local NotificationFrame = game:GetObjects("rbxassetid://6924028278")[1]
-NotificationFrame.ZIndex = 4
-NotificationFrame.Parent = NotificationHolder
-script = NotificationFrame.NotifScript
-local Notify = loadstring(NotificationFrame.NotifScript.Source)()
 script = oldScript
 
 local SolarisLib = {
@@ -225,10 +213,6 @@ function Ripple(Object)
 		end)
 	end)
 end
-
-function SolarisLib:Notification(title, desc)
-    Notify:New(title,desc)
-end    
 
 function SolarisLib:New(Config)
     if not isfolder(Config.FolderToSave) then 
