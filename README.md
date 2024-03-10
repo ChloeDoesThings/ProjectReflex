@@ -1,31 +1,35 @@
 # Project Reflex
 
-## NOTICE: This script can be detected sometimes depending on the game, please don't use this on your main account. Thanks :).
+## NOTICE: This script may be detected in the future, so make sure to only use this on an alt account. Also, this script is in BETA, so expect to see a ton of bugs. If you see any bugs, report them to the issues tab on this repository.
 
 ## About
-Project Reflex is a Roblox script that has a ton of features for tons of games such as Arsenal (aka Reflex Hub). This is in a "Work In Progress" stage, so expect to see bugs and such.
+Project Reflex (aka. Reflex Hub) is a Roblox script hub made for games such as Arsenal.
 
-## Developers
-ChloeDoesThings (me)
+## Loadstring (There is no actual loader yet, so this is for the Arsenal script)
+```lua
+loadstring(game:HttpGet('https://raw.githubusercontent.com/ChloeDoesThings/ProjectReflex/main/arsenal.lua'))()
+```
 
-## Supported Games
-### Reflex currently only has the following games so far:
-Arsenal
+## Status
+### Arsenal
+The script is working/undetected for the most part, excluding "One Shot Kill" and "Weapon Spawner". Those 2 features have been disabled and can not be used until they are confirmed to be undetected.
 
 ## Features
 ### Arsenal
-Aimbot - Aims at players for you
+Aimbot
 
-Silent Aim (with pSilent mode) - Same as aimbot, but it doesn't look at the enemy
+Silent Aim
 
-Anti Aim - Makes you harder to shoot
+Wallbang (Buggy)
 
-Kill All - Kills all enemies
+Triggerbot (Forgot to actually code it, so yeah don't expect it to work until the next update lmao)
 
-One Shot Kill - Allows you to shoot once and kill the enemy.
+Weapon Modifications (No Spread/Recoil, FireRate, etc.)
 
-Bunnyhop - Jumps whenever you're on the ground
+Anti Aim
 
-Sound Player (Whizz/Muzzle All and Play Voices) - Plays sounds everyone can hear
+One Shot Kill
 
-Bullet Hole Spam - Spams bullet holes everywhere you look, everyone can see them
+Serverside Sound Player
+
+Bullet Hole Spam
