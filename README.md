@@ -12,24 +12,48 @@ loadstring(game:HttpGet('https://raw.githubusercontent.com/ChloeDoesThings/Proje
 
 ## Status
 ### Arsenal
-The script is working/undetected for the most part, excluding "One Shot Kill" and "Weapon Spawner". Those 2 features have been disabled and can not be used until they are confirmed to be undetected.
+The script is working/undetected for the most part, however a couple features are still a work in progress/are disabled.
 
-## Features
-### Arsenal
-Aimbot
+## Features (Arsenal)
 
-Silent Aim
+### Aimbot
+Raycasting (Check for walls) - False
 
-Wallbang (Buggy)
+Aim Speed - 0.25
 
-Triggerbot (Forgot to actually code it, so yeah don't expect it to work until the next update lmao)
+FOV - InputNumber - 150.0
 
-Weapon Modifications (No Spread/Recoil, FireRate, etc.)
+### Silent Aim
+Mode - Hitbox - Hitbox, Raycast
 
-Anti Aim
+### Wallbang
+Mode - Teleport - Teleport, Hitbox, Raycast
 
-One Shot Kill
+### Triggerbot (Forgot to actually code it, so yeah don't expect it to work until the next update lmao)
 
-Serverside Sound Player
+### Weapon Modifications
+No Spread
 
-Bullet Hole Spam
+No Recoil
+
+Firerate
+
+Range
+
+Instant Equip
+
+
+
+### Anti Aim
+Mode - Down - Down, Up, NaN
+
+### One Shot Kill
+
+### Serverside Sound Player
+Whizz All
+
+Muzzle All
+
+Play Voices
+
+### Bullet Hole Spam
