@@ -676,3 +676,5 @@ function reflexUI:CreateKeybindButton(name, frameName)
 	end
 
 end
+
+return reflexUI
