@@ -622,3 +622,57 @@ function reflexUI:CreateKeybindButton(name, state, funnyTable, frameName, func)
 	end
 
 end
+
+--[[
+Name: CreateLabel
+
+Description: Creates a button that just shows text
+
+
+Arguments (Name - Description - Type):
+LabelName - Self Explainatory - string
+FrameName - The frame that you created earlier's name - string
+
+Return Values (Name - Description - Type):
+nil
+]]
+function reflexUI:CreateKeybindButton(name, frameName)
+	reflexUI.Data.buttonElementCount = reflexUI.Data.buttonElementCount + 1
+
+	if reflexUI.Data.buttonElementCount == 1 then
+		local newButtonElement = Instance.new("TextButton")
+		newButtonElement.Name = name .. "_Label"
+		newButtonElement.Parent = retrieveFrameFromName(frameName)
+		newButtonElement.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+		newButtonElement.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		newButtonElement.BorderSizePixel = 0
+		newButtonElement.Position = UDim2.new(0.271428585, 0, 0, 0)
+		newButtonElement.Size = UDim2.new(0, 509, 0, 33)
+		newButtonElement.Font = Enum.Font.Ubuntu
+
+		newButtonElement.Text = name
+
+		newButtonElement.TextColor3 = Color3.fromRGB(255, 255, 255)
+		newButtonElement.TextScaled = true
+		newButtonElement.TextSize = 14.000
+		newButtonElement.TextWrapped = true
+		newButtonElement.ZIndex = 727
+	else
+		local newButtonElement = Instance.new("TextButton")
+		newButtonElement.Name = name .. "_Label"
+		newButtonElement.Parent = retrieveFrameFromName(frameName)
+		newButtonElement.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+		newButtonElement.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		newButtonElement.BorderSizePixel = 0
+		newButtonElement.Position = UDim2.new(0.271428585, 0, reflexUI.Data["lastButtonElementFunnyNum:" .. frameName] + 0.0733333305, 0)
+		newButtonElement.Size = UDim2.new(0, 509, 0, 33)
+		newButtonElement.Font = Enum.Font.Ubuntu
+		newButtonElement.Text = name
+		newButtonElement.TextColor3 = Color3.fromRGB(255, 255, 255)
+		newButtonElement.TextScaled = true
+		newButtonElement.TextSize = 14.000
+		newButtonElement.TextWrapped = true
+		newButtonElement.ZIndex = 727
+	end
+
+end
