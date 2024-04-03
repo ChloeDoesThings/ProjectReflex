@@ -123,7 +123,12 @@ function reflexUI:CreateUI()
 	TabFrame.Size = UDim2.new(0, 190, 0, 450)
 	TabFrame.ZIndex = 727
 	TabFrame.Visible = false
-	
+
+		spawn(function()
+	ShowTabButtonsButton.MouseButton1Down:Connect(function()
+		TabFrame.Visible = not TabFrame.Visible
+		end)
+		end)
 	reflexUI.UIObjects = {
 		screenGui = ScreenGui,
 		mainFrame = Main,
@@ -205,7 +210,7 @@ function reflexUI:CreateTab(name)
 end
 
 local function retrieveFrameFromName(frameName) 
-	for i, v in pairs(reflexUI.UIObjects.mainFrame) do
+	for i, v in pairs(reflexUI.UIObjects.mainFrame:GetChildren()) do
 		if v.Name == frameName then
 			return v
 		end
