@@ -83,6 +83,10 @@ function reflexUI:CreateUI()
 	Main.Position = UDim2.new(0.204219416, 0, 0.187969923, 0)
 	Main.Size = UDim2.new(0, 700, 0, 50)
 	Main.ZIndex = 727
+
+	Main.Active = true
+	Main.Selectable = true
+	Main.Draggable = true
 	
 	TextLabel.Parent = Main
 	TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
