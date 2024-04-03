@@ -70,6 +70,10 @@ function reflexUI:CreateUI()
 	local TabFrame = Instance.new("Frame")
 	local CombatTabButton = Instance.new("TextButton")
 	local PlayerTabButton = Instance.new("TextButton")
+	local blurEffect = Instance.new("BlurEffect")
+
+	blurEffect.Size = 15
+	blurEffect.Parent = workspace.CurrentCamera
 	
 	ScreenGui.Parent = game.CoreGui
 	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
@@ -116,7 +120,7 @@ function reflexUI:CreateUI()
 	ShowTabButtonsButton.TextScaled = true
 	ShowTabButtonsButton.TextSize = 14.000
 	ShowTabButtonsButton.TextWrapped = true
-	ShowTabButtonsButton.ZIndex = 727
+	ShowTabButtonsButton.ZIndex = 728
 	
 	TabFrame.Name = "Tabs"
 	TabFrame.Parent = Main
@@ -125,7 +129,7 @@ function reflexUI:CreateUI()
 	TabFrame.BorderSizePixel = 0
 	TabFrame.Position = UDim2.new(-0.000248151511, 0, 0.915125728, 0)
 	TabFrame.Size = UDim2.new(0, 190, 0, 450)
-	TabFrame.ZIndex = 727
+	TabFrame.ZIndex = 728
 	TabFrame.Visible = false
 
 		spawn(function()
@@ -133,6 +137,19 @@ function reflexUI:CreateUI()
 		TabFrame.Visible = not TabFrame.Visible
 		end)
 		end)
+
+	spawn(function()
+	game.Players.LocalPlayer:GetMouse().KeyDown:Connect(function(key) -- i love using really old, depreciated functions (real)
+				if key == "p" then
+				Main.Visible = not Main.Visible
+				if Main.Visible then
+				blurEffect.Parent = workspace.CurrentCamera
+				else
+				blurEffect.Parent = nil
+				end
+				end
+			end)
+	end)
 	reflexUI.UIObjects = {
 		screenGui = ScreenGui,
 		mainFrame = Main,
@@ -206,6 +223,12 @@ function reflexUI:CreateTab(name)
 	newTabFrame.Position = UDim2.new(-0.000248151511, 0, 0.915125728, 0)
 	newTabFrame.Size = UDim2.new(0, 700, 0, 450)
 	newTabFrame.ZIndex = 727
+	
+	if reflexUI.Data.tabButtonCount == 1 then
+	newTabFrame.Visible = true
+	else
+	newTabFrame.Visible = false
+	end
 	
 	reflexUI.Data["buttonElementCount:" .. name .. "_TabFrame"] = 0
 	reflexUI.Data["lastButtonElementFunnyNum:" .. name .. "_TabFrame"] = 0
@@ -685,5 +708,3 @@ function reflexUI:CreateKeybindButton(name, frameName)
 	end
 
 end
-
-return reflexUI
