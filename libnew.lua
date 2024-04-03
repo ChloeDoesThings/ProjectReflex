@@ -26,10 +26,9 @@ reflexUI.UIObjects = {
 }
 reflexUI.Data = {
 	tabButtonCount = 0,
-	lastTabButtonFunnyPositionNumber = 0,
 	tabFrameCount = 0,
 	buttonElementCount = 0,
-	lastButtonElementFunnyPositionNumber = 0,
+	lastTabButtonFunnyPositionNumber = 0
 }
 
 reflexUI.ButtonTableFunctions = {
@@ -108,7 +107,7 @@ function reflexUI:CreateUI()
 	ShowTabButtonsButton.BorderSizePixel = 0
 	ShowTabButtonsButton.Size = UDim2.new(0, 49, 0, 46)
 	ShowTabButtonsButton.Font = Enum.Font.Ubuntu
-	ShowTabButtonsButton.Text = "▽" -- △ ▽
+	ShowTabButtonsButton.Text = " ? " --  ?   ? 
 	ShowTabButtonsButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 	ShowTabButtonsButton.TextScaled = true
 	ShowTabButtonsButton.TextSize = 14.000
@@ -199,6 +198,9 @@ function reflexUI:CreateTab(name)
 	newTabFrame.Size = UDim2.new(0, 700, 0, 450)
 	newTabFrame.ZIndex = 727
 	
+	reflexUI.Data["buttonElementCount:" .. name .. "_TabFrame"] = 0
+	reflexUI.Data["lastButtonElementFunnyNum:" .. name .. "_TabFrame"] = 0
+	
 	return newTabFrame.Name
 end
 
@@ -228,7 +230,7 @@ ButtonTable - A table with functions to rename the button and other stuff - Butt
 function reflexUI:CreateButton(name, frameName, func)
 	reflexUI.Data.buttonElementCount = reflexUI.Data.buttonElementCount + 1
 
-	if reflexUI.Data.buttonElementCount  == 1 then
+	if reflexUI.Data["buttonElementCount:" .. frameName] == 1 then
 		local newButtonElement = Instance.new("TextButton")
 		newButtonElement.Name = name .. "_Button"
 		newButtonElement.Parent = retrieveFrameFromName(frameName)
@@ -259,7 +261,7 @@ function reflexUI:CreateButton(name, frameName, func)
 		newButtonElement.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 		newButtonElement.BorderColor3 = Color3.fromRGB(0, 0, 0)
 		newButtonElement.BorderSizePixel = 0
-		newButtonElement.Position = UDim2.new(0.271428585, 0, reflexUI.Data.lastButtonElementFunnyPositionNumber + 0.0733333305, 0)
+		newButtonElement.Position = UDim2.new(0.271428585, 0, reflexUI.Data["lastButtonElementFunnyNum:" .. frameName] + 0.0733333305, 0)
 		newButtonElement.Size = UDim2.new(0, 509, 0, 33)
 		newButtonElement.Font = Enum.Font.Ubuntu
 		newButtonElement.Text = name
@@ -273,7 +275,7 @@ function reflexUI:CreateButton(name, frameName, func)
 			newButtonElement.MouseButton1Down:Connect(func)
 		end)
 		
-		reflexUI.Data.lastButtonElementFunnyPositionNumber = reflexUI.Data.lastButtonElementFunnyPositionNumber + 0.0733333305
+		reflexUI.Data["lastButtonElementFunnyNum:" .. frameName] = reflexUI.Data["lastButtonElementFunnyNum:" .. frameName] + 0.0733333305
 		return {
 			newButtonElement,
 			reflexUI.ButtonTableFunctions
@@ -303,7 +305,7 @@ ToggleTable - A table with functions to rename the toggle, set the value, etc. -
 function reflexUI:CreateToggle(name, state, frameName, func)
 	reflexUI.Data.buttonElementCount = reflexUI.Data.buttonElementCount + 1
 
-	if reflexUI.Data.buttonElementCount  == 1 then
+	if reflexUI.Data["buttonElementCount:" .. frameName] == 1 then
 		local newButtonElement = Instance.new("TextButton")
 		newButtonElement.Name = name .. "_Toggle"
 		newButtonElement.Parent = retrieveFrameFromName(frameName)
@@ -352,7 +354,7 @@ function reflexUI:CreateToggle(name, state, frameName, func)
 		newButtonElement.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 		newButtonElement.BorderColor3 = Color3.fromRGB(0, 0, 0)
 		newButtonElement.BorderSizePixel = 0
-		newButtonElement.Position = UDim2.new(0.271428585, 0, reflexUI.Data.lastButtonElementFunnyPositionNumber + 0.0733333305, 0)
+		newButtonElement.Position = UDim2.new(0.271428585, 0, reflexUI.Data["lastButtonElementFunnyNum:" .. frameName] + 0.0733333305, 0)
 		newButtonElement.Size = UDim2.new(0, 509, 0, 33)
 		newButtonElement.Font = Enum.Font.Ubuntu
 		if state then
@@ -384,7 +386,7 @@ function reflexUI:CreateToggle(name, state, frameName, func)
 			end)
 		end)
 
-		reflexUI.Data.lastButtonElementFunnyPositionNumber = reflexUI.Data.lastButtonElementFunnyPositionNumber + 0.0733333305
+		reflexUI.Data["lastButtonElementFunnyNum:" .. frameName] = reflexUI.Data["lastButtonElementFunnyNum:" .. frameName] + 0.0733333305
 		return {
 			newButtonElement,
 			reflexUI.ButtonTableFunctions
@@ -425,7 +427,7 @@ ToggleTable - A table with functions to rename the button, set the value, etc. -
 function reflexUI:CreateModeButton(name, state, funnyTable, frameName, func)
 	reflexUI.Data.buttonElementCount = reflexUI.Data.buttonElementCount + 1
 
-	if reflexUI.Data.buttonElementCount == 1 then
+	if reflexUI.Data["buttonElementCount:" .. frameName] == 1 then
 		local newButtonElement = Instance.new("TextButton")
 		newButtonElement.Name = name .. "_ModeButton"
 		newButtonElement.Parent = retrieveFrameFromName(frameName)
@@ -480,7 +482,7 @@ function reflexUI:CreateModeButton(name, state, funnyTable, frameName, func)
 		newButtonElement.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 		newButtonElement.BorderColor3 = Color3.fromRGB(0, 0, 0)
 		newButtonElement.BorderSizePixel = 0
-		newButtonElement.Position = UDim2.new(0.271428585, 0, reflexUI.Data.lastButtonElementFunnyPositionNumber + 0.0733333305, 0)
+		newButtonElement.Position = UDim2.new(0.271428585, 0, reflexUI.Data["lastButtonElementFunnyNum:" .. frameName] + 0.0733333305, 0)
 		newButtonElement.Size = UDim2.new(0, 509, 0, 33)
 		newButtonElement.Font = Enum.Font.Ubuntu
 		newButtonElement.Text = name .. " - " .. state
@@ -516,7 +518,7 @@ function reflexUI:CreateModeButton(name, state, funnyTable, frameName, func)
 			end)
 		end)
 
-		reflexUI.Data.lastButtonElementFunnyPositionNumber = reflexUI.Data.lastButtonElementFunnyPositionNumber + 0.0733333305
+		reflexUI.Data["lastButtonElementFunnyNum:" .. frameName] = reflexUI.Data["lastButtonElementFunnyNum:" .. frameName] + 0.0733333305
 		return {
 			newButtonElement,
 			reflexUI.ButtonTableFunctions
@@ -588,7 +590,7 @@ function reflexUI:CreateKeybindButton(name, state, funnyTable, frameName, func)
 		newButtonElement.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 		newButtonElement.BorderColor3 = Color3.fromRGB(0, 0, 0)
 		newButtonElement.BorderSizePixel = 0
-		newButtonElement.Position = UDim2.new(0.271428585, 0, reflexUI.Data.lastButtonElementFunnyPositionNumber + 0.0733333305, 0)
+		newButtonElement.Position = UDim2.new(0.271428585, 0, reflexUI.Data["lastButtonElementFunnyNum:" .. frameName] + 0.0733333305, 0)
 		newButtonElement.Size = UDim2.new(0, 509, 0, 33)
 		newButtonElement.Font = Enum.Font.Ubuntu
 		newButtonElement.Text = name .. " - " .. state
