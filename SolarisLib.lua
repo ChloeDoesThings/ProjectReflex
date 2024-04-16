@@ -9,9 +9,6 @@ function randomString()
     return table.concat(array)
 end
 
-local blurEffect = Instance.new("BlurEffect")
-blurEffect.Size = 25
-blurEffect.Parent = workspace.CurrentCamera
 
 -- This User Interface Library is brought to you by Solaris Software.
 local Solaris = Instance.new("ScreenGui")
@@ -985,11 +982,6 @@ function SolarisLib:New(Config)
         function()
             uitoggled = not uitoggled
             MainUI.Visible = uitoggled
-            if uitoggled then
-                blurEffect.Parent = workspace.CurrentCamera
-            else
-                blurEffect.Parent = nil
-            end
         end
     )
 
@@ -1037,11 +1029,6 @@ function SolarisLib:New(Config)
              then
                 uitoggled = not uitoggled
                 MainUI.Visible = uitoggled
-                if uitoggled then
-                    blurEffect.Parent = workspace.CurrentCamera
-                else
-                    blurEffect.Parent = nil
-                end
             end
         end
     )
